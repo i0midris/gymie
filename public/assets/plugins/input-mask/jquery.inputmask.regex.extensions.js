@@ -103,7 +103,7 @@ Allows for using regular expressions as a mask
                                     isvalid = validateRegexToken(matchToken, true);
                                 } else if (matchToken["isQuantifier"] == true) {
                                     matchToken = matchToken["matches"][0];
-                                    var quantifierMax = opts.quantifierFilter.exec(matchToken)[0].replace("}", "");
+                                    var quantifierMax = opts.quantifierFilter.exec(matchToken)[0].replace(/}/g, "");
                                     var testExp = regexPart + "{1," + quantifierMax + "}"; //relax quantifier validation
                                     for (var j = 0; j < openGroupCount; j++) {
                                         testExp += ")";
