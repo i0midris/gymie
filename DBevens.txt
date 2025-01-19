@@ -1,0 +1,10 @@
+SET GLOBAL event_scheduler = ON;
+
+
+CREATE EVENT update_subscription_status_periodic
+ON SCHEDULE EVERY 30 MINUTE
+STARTS CURRENT_TIMESTAMP
+DO
+UPDATE trn_subscriptions
+SET status = 0
+WHERE end_date < NOW();
